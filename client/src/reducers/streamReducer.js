@@ -9,7 +9,7 @@ import {
 
 export default (state = {}, action) => {
     switch(action.type) {
-        case FETCH_STREAM:
+        case FETCH_STREAMS:
             return {...state, ..._.mapKeys(action.payload, 'id') } // convert the arrya into object
         case FETCH_STREAM:
             return {...state, [action.payload.id]: action.payload}; // interpolation
