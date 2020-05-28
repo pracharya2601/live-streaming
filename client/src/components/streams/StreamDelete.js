@@ -35,15 +35,21 @@ class StreamDelete extends React.Component {
     
 
     render(){
+        console.log(this.props.stream)
         return (
-            <Modal 
-                title='Delete Stream'
-                content={this.renderContent()}
-                actions={this.renderAction()}
-                onDismiss={() => history.push('/')}
-                userId={this.props.match.params.userId}
-                currentUserId={this.props.currentUserId}
-            />
+            <div>
+                {this.props.stream && this.props.stream.userId === this.props.currentUserId && (
+                    <Modal 
+                        title='Delete Stream'
+                        content={this.renderContent()}
+                        actions={this.renderAction()}
+                        onDismiss={() => history.push('/')}
+                        userId={this.props.match.params.userId}
+                        currentUserId={this.props.currentUserId}
+                    />
+                )}
+            </div>
+
         );
 
     }
