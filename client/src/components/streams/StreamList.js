@@ -13,12 +13,21 @@ class StreamList extends React.Component{
         if(stream.userId === this.props.currentUserId) {
             return(
                 <div className="right floated content">
-                    <Link to={`/stream/edit/${stream.id}`} className="ui button primary">Edit</Link>
-                    <button className="ui button negative">Delete</button>
+
+                    <div className="ui compact menu">
+                        <div className="ui simple dropdown item">
+                            <i className="ellipsis vertical icon" />
+                            <div className="menu">
+                            <Link to={`/stream/edit/${stream.id}/${stream.userId}`} className="item">Edit</Link>
+                            <Link to={`/stream/delete/${stream.id}/${stream.userId}`} className="item">Delete</Link>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             )
         }
     }
+
     renderCreate() {
         if (this.props.isSignedIn) {
             return(
@@ -58,10 +67,10 @@ class StreamList extends React.Component{
 
 const mapStateToProps = state => {
     return {
-        streams: Object.values(state.streams),
+        streams: Object.values(state.streams), // convert all the values of an object into an array
         currentUserId: state.auth.userId,
         isSignedIn: state.auth.isSignedIn
-    }; // convert all the values of an object into an array
+    }; 
 }
 
 export default connect(mapStateToProps, { fetchStreams })(StreamList);
