@@ -1,0 +1,26 @@
+{
+  "name": "live-streaming",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"npm run server\" \"npm run rtmp\"",
+    "server": "cd api && npm install && node server.js",
+    "client": "npm start --prefix client",
+    "rtmp": "cd rtmpserver && npm install && node index.js",
+    "dev": "concurrently \"npm run server\" \"npm run client\" \"npm run rtmp\"",
+    "heroku-postbuild": "npm install --prefix client && npm run build --prefix client"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pracharya2601/live-streaming.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^4.1.2"
+  },
+  "bugs": {
+    "url": "https://github.com/pracharya2601/live-streaming/issues"
+  }
+}
