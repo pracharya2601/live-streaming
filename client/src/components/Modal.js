@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import NotPermited from './streams/NotPermited';
 
 const Modal = props => {
     return ReactDOM.createPortal(
